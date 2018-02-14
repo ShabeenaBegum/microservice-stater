@@ -53,7 +53,7 @@ class ExampleTest extends TestCase
 
         $this->actingAs($this->user, 'api');
 
-        $response = $this->json('get','/api/user');
+        $response = $this->json('GET','/api/user');
 
         $response->assertJsonFragment([
                 'name' => $this->user->name,
