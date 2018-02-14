@@ -8,7 +8,8 @@ abstract class TestCase extends BaseTestCase
 {
     use CreatesApplication;
 
-    public function refreshDataBase(){
+    public function refreshDataBase()
+    {
         $this->artisan('migrate:fresh');
     }
 }

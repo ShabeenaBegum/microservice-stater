@@ -20,7 +20,7 @@ Route::get('/test', function (Request $request) {
 Route::middleware('auth:api')->group(function () {
 
     Route::get('/user', function (Request $request) {
-        return resError($request->user());
+        return resOk($request->user());
     });
 
     Route::get('user/profile', 'HomeController@index');

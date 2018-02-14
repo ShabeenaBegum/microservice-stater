@@ -24,30 +24,28 @@ class ExampleTest extends TestCase
     }
     /**
      * A basic test example.
-     *
      * @return void
      */
     public function test_notification_is_sent()
     {
-
         Notification::fake();
 
         $this->get('/test');
 
-        Notification::assertSentTo(
-            [$this->user], Test::class
-        );
+        Notification::assertSentTo([$this->user], Test::class);
     }
 
     public function test_It_gives_unauthenticated_error()
     {
 
-        $response = $this->json("get",'/api/user');
-
-        $response->assertStatus(401)
-            ->assertJson([
-                'message' => "Unauthenticated.",
-            ]);
+        $this->json("GET",'/api/user')
+                ->assertStatus(401)
+                ->assertJson([
+                    "success" => false,
+                    "data" => [
+                        'message' => "Unauthenticated."
+                    ]
+                ]);
     }
 
     public function test_It_gives_user_details_if_authenticated()
