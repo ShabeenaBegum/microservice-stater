@@ -42,4 +42,15 @@ class User extends AgModel implements
         return $this->belongsToMany(Permission::class);
     }
 
+    public function toArray()
+    {
+        return [
+            'id' => $this->_id,
+            'name' => $this->name,
+            'email' => $this->email,
+            'created_at' => (string)$this->created_at,
+            'updated_at' => (string)$this->updated_at
+        ];
+    }
+
 }
